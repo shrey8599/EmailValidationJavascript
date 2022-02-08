@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang=”en”>
+<head>
+<meta charset=”utf-8″>
+<title>email validation in JavaScript</title>
+</head>
+<body>
+  <h1>Email Validation</h1>
+  <input type="text" id="email-input" name="email-input" placeholder="Enter email...">
+  <!-- <input type=”submit” name=”Validate” value=”Validate” onclick=”ValidateEmail(document.form1.text1)”/> -->
+  <br>
+    <button type="button" name="Validate" id="validatebtn" onclick="validation('email-input')">Validate</button>
+    <!-- onclick="ValidateEmail(document.form1.email-input) -->
+    <button type="button" name="Clear" id="clearbtn" onclick="resetValues()">Clear</button>
+    <br>
+    <p style="color:red;display:none;" id="validationResult">Result here</p>
+
+<script type="text/javascript">
+  var validateEmail = (email) => {
+    return email.match(
+      /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+      );
+    };
+    console.log(validateEmail);
+
+  var email = document.getElementById('email-input');
+  console.log(email);
+  var tag = document.getElementById('validationResult');
+  var validatebtn = document.querySelector('validatebtn');
+  function validation(email){
+    if(validateEmail(document.getElementById('email-input').value)){
+      tag.style.color="black";
+      tag.innerHTML="The Email is Valid."
+      tag.style.display="block";
+    }
+    else{
+      tag.style.color="red";
+      tag.innerHTML="The Email is Invalid."
+      tag.style.display="block";
+    }
+  }
+  function resetValues(){
+    tag.style.display="none";
+    email.value="";
+  }
+</script>
+</body>
+</html>
